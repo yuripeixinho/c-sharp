@@ -223,3 +223,205 @@ int meuInt = (int)meuDouble; // 5, Conversão explícita de double para int (per
 ## Entrada de Dados
 
 Como você já deve saber, `Console.WriteLine()` é usado para a saída de dados.
+
+## Entrada de Dados
+
+Como você já deve saber, `Console.WriteLine()` é usado para a saída de dados. Agora, vamos aprender como usar o `Console.ReadLine()`.
+
+- Lê a entrada padrão **************até a quebra de linha**************
+- O método apenas retorna string. Então não é possível pegar informações de outros tipos de dados, como int, por exemplo. Para fazer isso como aprendemos anteriormente, temos que mudar o tipo de forma manual com o Casting.
+
+```csharp
+Console.WriteLine("Bem-vindo! Por favor, digite seu nome:");
+string nome = Console.ReadLine();
+
+string saudacao = $"Olá, {nome}! Bem-vindo à nossa casa virtual.";
+Console.WriteLine(saudacao);
+```
+
+## Condicionais Ternárias
+
+Há também uma abreviação if else, que é conhecida como operador ternário porque consiste em três operandos. Ele pode ser usado para substituir várias linhas de código por uma única linha. Muitas vezes é usado para substituir instruções if else simples:
+
+```csharp
+variable = (condition) ? expressionTrue :  expressionFalse;A
+```
+
+Ao invés de escrever toda essa linha de código:
+
+```csharp
+
+int time = 20;
+if (time < 18) 
+{
+  Console.WriteLine("Good day.");
+} 
+else 
+{
+  Console.WriteLine("Good evening.");
+} 
+```
+
+Podemos escrever somente:
+
+```csharp
+int time = 20;
+string result = (time < 18) ? "Good day." : "Good evening.";
+Console.WriteLine(result);
+```
+
+## Estrutura de Repetição
+
+As estruturas de repetições no C# não são diferentes das demais lógicas das outras linguagens.
+
+### While
+
+```csharp
+while (condicao) 
+{
+	// código
+}
+```
+
+```csharp
+int i = 0;
+
+while (i < 10)
+{
+  Console.WriteLine(i);
+
+  i++;
+}
+```
+
+### Do While
+
+O `Do While` é uma variante do loops while. A diferença, é que ele obrigatoriamente executa o código pelo menos uma vez antes de checar se a condição é verdadeira.
+
+```csharp
+do {
+
+}
+while (condicao);
+```
+
+```csharp
+int i = 0;
+
+do
+{
+	Console.WriteLine(i);
+	i++;
+} while (i < 10);
+```
+
+## For
+
+Utilizado quando você sabe exatamente quantas vezes você quer fazer uma repetição em determinado bloco de código.
+
+```csharp
+for (declaracao 1; declaracao 2; declaracao 3) 
+{
+// bloco de código a ser executado
+}
+```
+
+************************Declaração 1************************ é executado (uma vez) antes da execução do bloco de código
+
+****************Declaração 2**************** define a condição para continuar executando o código
+
+********Declaração 3******** é executado (toda vez) depois do código ser executado
+
+```csharp
+for (int i = 0; i < 5; i++) 
+{
+  Console.WriteLine(i);
+}
+```
+
+Vale ressaltar que também existe a possibilidade colocar um loop dentro de um outro loop. 
+
+```csharp
+// Loop Externo
+for (int i = 1; i <= 2; ++i) 
+{
+  Console.WriteLine("Externo: " + i);  // Executa 2 vezes
+
+  // Loop Interno
+  for (int j = 1; j <= 3; j++) 
+  {
+    Console.WriteLine(" Interno: " + j); // Executa 6 vezes (2 * 3)
+  }
+}
+```
+
+## Foreach
+
+O `Foreach` por sua vez, é usado para iterar por um conjunto de coleções ou sequência de dados (**como arrays, listas, dicionários).** Sua vantagem é uma maneira mais simples e legível de percorrer uma coleção em comparação o `for` convencional.
+
+```csharp
+foreach (Tipo elemento in coleção)
+{
+    // Código a ser executado para cada elemento na coleção
+}
+```
+
+```csharp
+string[] cars = { "Volvo", "BMW", "Ford", "Mazda" };
+
+foreach (string i in cars)
+{
+	Console.WriteLine(i);
+}
+```
+
+## Arrays
+
+Coleção de elementos do mesmo tipo, armazenado em posições consecutivas de memórias e sendo acessado por meio do índice.
+
+Declarar um array em C#:
+
+```csharp
+tipo[] nomeDoArray;
+int[] numeros;
+```
+
+Há várias formas de inicializar um Array:
+
+```csharp
+// Criar um array de quatro elementos e adicionar
+// valores posteriormente
+string[] carros = new string[4];
+
+// Criar um array de quatro elementos e adicionar 
+// valores imediatamente
+string[] carros = new string[4] { "Volvo", "BMW", "Ford", "Mazda" };
+
+// Criar um array de quatro elementos sem especificar o tamanho
+string[] carros = new string[] { "Volvo", "BMW", "Ford", "Mazda" };
+
+// Criar um array de quatro elementos, omitindo a palavra-chave
+// "new" e sem especificar o tamanho
+string[] carros = { "Volvo", "BMW", "Ford", "Mazda" };
+```
+
+Para acessar um elemento é acessando pelo índice:
+
+```csharp
+int terceiroElemento = numeros[2];
+```
+
+Atribuir um novo valor a um elemento específico do array:
+
+```csharp
+numeros[2] = 42;
+```
+
+### Sort
+
+Esse método classifica os elementos em ordem crescente. Existem vários outros métodos disponíveis para trabalhar com os arrays, como por exemplo Sort, ou Min, Max e Sum ************(System.Linq)************.
+
+```csharp
+int[] numeros = { 5, 2, 8, 1, 9 };
+Array.Sort(numeros);
+```
