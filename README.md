@@ -1,3 +1,20 @@
+### Navegação
+
+1. introdução 
+    1. sintaxe 
+    2. variável e constante
+    3. tipos de dados
+- Casting
+- Entrada de Dados
+- Condições Ternárias
+- Estrutura de Repetição (Loops)
+- Arrays
+    - Métodos
+    - Arrays Multidimensionais
+- Métodos (Funções)
+    - Named Argument
+    - Method Overloading
+
 ## **Introdução**
 
 Linguagem orientada a objetos criada pela Microsoft. Tem suas raízes da linguagem C.
@@ -425,3 +442,228 @@ Esse método classifica os elementos em ordem crescente. Existem vários outros 
 int[] numeros = { 5, 2, 8, 1, 9 };
 Array.Sort(numeros);
 ```
+
+## Arrays Multidimensionais
+
+Estrutura de dados que permitem armazenar elementos em mais de uma dimensão. É interessante utilizar caso você queira armazenar dados tabulares, como tabela com linhas e colunas.
+
+Para criar um array 2D, é necessário coloca-los em chaves e espera-los por vírgula `(,)` 
+
+```csharp
+int[,] numbers = { {1, 4, 2}, {3, 6, 8} };
+```
+
+Dessa forma, temos dois arrays distintos dentro de uma única variável. Eles são separados pela vírgula e podem ser elementos distintos, como informações de dois usuários diferentes por exemplo.
+
+na tabela ficaria assim:
+
+|  | COLUMN 0 | COLUMN 1 | COLUMN 2 |
+| --- | --- | --- | --- |
+| ROW 0 | 1 | 4 | 2 |
+| ROW 1 | 3 | 6 | 8 |
+
+### Acessando elementos de um array 2D
+
+Para acessar, devemos especificar dois indexes ao invés de apenas um. O primeiro para detectar o array em si (row) e o segundo para a coluna
+
+```csharp
+int[,] numbers = { {1, 4, 2}, {3, 6, 8} };
+Console.WriteLine(numbers[0, 2]);
+```
+
+### Mudando elementos de um array 2D
+
+A lógica de acessar um Array é a mesma para modificar seus valores:
+
+```csharp
+int[,] numbers = { {1, 4, 2}, {3, 6, 8} };
+numbers[0, 0] = 5;  // muda o valor de 1 para 5
+Console.WriteLine(numbers[0, 0]);
+```
+
+## Métodos
+
+Métodos são blocos de conteúdos que apenas rodam quando são chamados. É possível passar dados (parâmetros) dentro desses métodos. São usados para rodar certas ações que são conhecidas como funções. É importante usar métodos para definir um código apenas uma vez e reutilizado várias.
+
+### Criar um método
+
+O método é definido com seu nome seguido de parênteses `()` No C#, existem métodos predefinidos como `Main()`, mas você pode criar seus próprios métodos funções.
+
+```csharp
+class Program
+{
+  static void MeuMetodo() 
+  {
+    // code to be executed
+  }
+}
+```
+
+`MeuMetodo()` é o nome do método
+`static` significa que o método pertence à classe do programa e não um objeto da classe do programa
+`void`significa que o método não vai retornar um valor
+
+Para executar um método em C#
+
+Dentro do `Main()`chame o método `MeuMetodo();`
+
+```csharp
+
+static void MyMethod() 
+{
+  Console.WriteLine("I just got executed!");
+}
+
+static void Main(string[] args)
+{
+  MyMethod();
+}
+
+// Saída "Comando executado"
+```
+
+No C# os parâmetros funcionam da mesma forma de todas as demais linguagens e também é possível colocar um valor padrão no parâmetro.
+
+### Retornar valor em um método
+
+No C# é necessário colocar o tipo de valor que o método vai retornar, anteriormente vimos que usamos o `void` que indica que não deve retornar nenhum valor.
+
+Métodos que tem algum tipo de retorno diferente de `void` são chamados de Métodos com valor de retorno. Nesses métodos você é obrigado a usar a instrução `return` para retornar um valor do tipo especificado.
+
+```csharp
+public int MetodoComValorDeRetorno()
+{
+    return 42; // Retorna um valor inteiro
+}
+```
+
+Vamos fazer um exemplo que retorna a soma dos parâmetros no método
+
+```csharp
+static int MyMethod(int x, int y) 
+{
+  return x + y;
+}
+
+static void Main(string[] args)
+{
+  Console.WriteLine(MyMethod(5, 3));
+}
+
+// Saída 8 (5 + 3)
+```
+
+Agora vamos exemplificar de uma forma divertida? Imagine que você é um chef de cozinha em um restaurante e está criando uma receita para fazer panquecas deliciosas. Cada passo da receita é como um método em C#. Vamos criar um método chamado **`FazerPanquecas`** para tornar isso divertido:
+
+**Passo 1: Decida o Nome do Seu Método**
+
+Assim como você nomearia uma receita, dê um nome ao seu método. Vamos chamá-lo de **`FazerPanquecas`**.
+
+```csharp
+public void FazerPanquecas()
+{
+    // Aqui vamos fazer as panquecas com farinha e leite!
+}
+```
+
+**Passo 2: Escolha os Ingredientes (Parâmetros)**
+
+Em uma receita, você precisa de ingredientes, certo? No nosso método **`FazerPanquecas`**, precisamos de ingredientes, que são nossos parâmetros. Por exemplo, podemos ter **`farinha`** e **`leite`** como ingredientes para fazer a massa das panquecas. Esses são nossos parâmetros:
+
+```csharp
+public void FazerPanquecas(double farinha, double leite)
+{
+    // Aqui vamos fazer as panquecas com farinha e leite!
+}
+```
+
+**Passo 3: Instruções da Receita (Código do Método)**
+
+Agora, é hora de adicionar as instruções da receita (código do método). Você começa com uma panela quente e adiciona a massa. Da mesma forma, no nosso método, escrevemos o código para fazer panquecas usando os ingredientes (parâmetros):
+
+```csharp
+public void FazerPanquecas(double farinha, double leite)
+{
+    // Misturar farinha e leite para fazer a massa
+    double massa = farinha + leite;
+
+    // Cozinhar a massa em uma frigideira quente
+    Console.WriteLine("Coloque a massa na frigideira quente!");
+
+    // E assim por diante...
+}
+```
+
+**Passo 4: Desfrute das Panquecas (Retorno do Método)**
+
+Depois de seguir as instruções da receita, você obtém panquecas deliciosas. No método, podemos escolher retornar algo. Vamos retornar o sabor das panquecas:
+
+```csharp
+public static double FazerPanquecas(double farinha, double leite)
+{
+    // Misturar farinha e leite para fazer a massa
+    double massa = farinha + leite;
+
+    // Cozinhar a massa em uma frigideira quente
+    Console.WriteLine("Coloque a massa na frigideira quente!");
+
+    // As panquecas estão prontas!
+    return massa;
+}
+```
+
+**Passo 5: Sirva as Panquecas (Chamada do Método)**
+
+Agora que criamos nosso método **`FazerPanquecas`**, podemos chamá-lo sempre que quisermos fazer panquecas:
+
+```csharp
+double sabor = FazerPanquecas(200, 300);
+Console.WriteLine("Panquecas prontas: " + sabor);
+```
+
+E voilà, você acabou de criar seu método **`FazerPanquecas`** em C#! Agora, sempre que você quiser panquecas, é só chamar o método. A programação é como seguir uma receita divertida, e os métodos são como os passos da sua receita de código. Bom apetite! 🥞😄
+
+### Named Arguments
+
+Permite você chamar um método e especificar de forma explícita o nome dos parâmetros que você deseja passar.
+
+```csharp
+void Exemplo(int a, int b)
+{
+    // Código do método aqui
+}
+
+// Chama o método com argumentos nomeados
+Exemplo(b: 10, a: 5);
+```
+
+Isso torna claro o valor que passamos no parâmetro sem necessariamente coloca-los em ordem.
+
+### Método Overloading
+
+É quando você cria vários métodos com o mesmo nome em uma classe, mas com diferentes **********tipos********** ou ****números**** de argumentos. Isso permite que você use o mesmo nome do método para fazer coisas diferentes dependendo do argumento que você usa ao chamar.
+
+Aqui está um exemplo simples de sobrecarga de método:
+
+```csharp
+class Calculadora
+{
+    public int Somar(int a, int b)
+    {
+        return a + b;
+    }
+
+    public double Somar(double a, double b)
+    {
+        return a + b;
+    }
+}
+
+Calculadora calculadora = new Calculadora();
+// Chamar o método com inteiros
+int resultadoInt = calculadora.Somar(5, 3);
+
+// Chamar o método com doubles
+double resultadoDouble = calculadora.Somar(3.5, 2.7); 
+```
+
